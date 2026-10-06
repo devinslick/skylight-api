@@ -53,5 +53,7 @@ jobs:
 
       - name: Publish package distributions to PyPI
         uses: pypa/gh-action-pypi-publish@release/v1
-        with:
-          pypi_api_token: ${{ secrets.PYPI_API_TOKEN }}
+        # Trusted publishing (OIDC): requires a (pending) publisher registered
+        # on PyPI for devinslick/skylight-api, workflow publish.yml,
+        # environment pypi. The action's token input is `password`, not
+        # `pypi_api_token` — an API-token fallback would need that rename.
